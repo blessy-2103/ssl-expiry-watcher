@@ -346,7 +346,7 @@ Risk Classification
 AI Renewal Task Generation
       ↓
 Database Storage
-      ↓
+      ↓ 
 Discord Notifications
       ↓
 Ranking Engine
@@ -357,6 +357,13 @@ Dashboard Visualization
 ```
 
 ---
+# Screenshots
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/838318cd-ecae-4d95-9636-9eb5f507bac0" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fb5ee3a4-d787-458b-a4f6-9d9f076c88ea" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/dbe1a193-9577-438b-92cc-94178024b555" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2695ba3b-d6db-4694-ba32-c6cc3994b602" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9dfffdcf-65e6-4dee-ae21-bdd5ed6f1f1f" />
+
 
 
 

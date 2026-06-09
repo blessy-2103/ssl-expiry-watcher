@@ -307,7 +307,7 @@ http://127.0.0.1:5000
 
 ---
 
-# 📊 Outputs Generated
+#  Outputs Generated
 
 | Output             | Description             |
 | ------------------ | ----------------------- |
@@ -319,7 +319,7 @@ http://127.0.0.1:5000
 
 ---
 
-# 🛠️ Tech Stack
+#  Tech Stack
 
 | Technology       | Usage          |
 | ---------------- | -------------- |
@@ -361,8 +361,3 @@ Dashboard Visualization
 
 
 
-# 📜 License
-
-MIT License
-
----

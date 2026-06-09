@@ -1,0 +1,71 @@
+domain,expiry_date,days_left,status,incident,renewal,checked_at,task,owner
+openai.com,—,-1,BROKEN,BROKEN,NO_ACTION,2026-06-09 15:01:41,"📋 **Task:** Review SSL Certificate configuration for openai.com
+
+🚨 **Priority:** HIGH
+
+⚙️ **Action Steps:**
+• Run standard diagnostics scan.
+• Verify infrastructure path availability.",oncall-core-engineer
+wikipedia.org,2026-07-06 20:52:29,27,WARNING,P2 - WARNING,RENEWAL_TRIGGERED,2026-06-09 15:00:35,"📋 **Task:** Review SSL Certificate configuration for wikipedia.org
+
+🚨 **Priority:** HIGH
+
+⚙️ **Action Steps:**
+• Run standard diagnostics scan.
+• Verify infrastructure path availability.",secops-triage-team
+apple.com,2026-07-16 18:52:56,37,HEALTHY,P3 - OK,NO_ACTION,2026-06-09 14:59:33,"📋 **Task:** Apple.com Domain Health Checkup
+
+🚨 **Priority:** LOW
+
+⚙️ **Action Steps:**
+• Verify domain apple.com is properly configured and does not have any outstanding issues.
+• Perform a spot check of domain's DNS records to ensure they are up-to-date and correct.",secops-triage-team
+stackoverflow.com,2026-07-18 13:32:17,38,HEALTHY,P3 - OK,NO_ACTION,2026-06-09 15:01:08,"📋 **Task:** Review SSL Certificate configuration for stackoverflow.com
+
+🚨 **Priority:** LOW
+
+⚙️ **Action Steps:**
+• Run standard diagnostics scan.
+• Verify infrastructure path availability.",platform-team
+github.com,2026-08-02 23:59:59,54,HEALTHY,P3 - OK,NO_ACTION,2026-06-09 14:57:33,"📋 **Task:** github.com Domain Health Checkup
+
+🚨 **Priority:** LOW
+
+⚙️ **Action Steps:**
+• Verify domain github.com is properly configured and running without issues.
+• Check for any recent changes or updates that may affect domain health.",secops-triage-team
+cloudflare.com,2026-08-08 22:14:02,60,HEALTHY,P3 - OK,NO_ACTION,2026-06-09 14:58:03,"📋 **Task:** Cloudflare.com Domain Renewal Verification
+
+🚨 **Priority:** LOW
+
+⚙️ **Action Steps:**
+• Verify domain ownership and ensure all necessary information is up-to-date for cloudflare.com.
+• Review renewal process to ensure automatic renewal is set up or schedule a manual renewal if necessary.",secops-triage-team
+google.com,2026-08-10 18:35:27,62,HEALTHY,P3 - OK,NO_ACTION,2026-06-09 14:57:04,"📋 **Task:** Google.com Domain Expiration Notification
+
+🚨 **Priority:** LOW
+
+⚙️ **Action Steps:**
+• Verify domain registration status with registrar and update records if necessary.
+• Notifies relevant stakeholders about upcoming expiration date (62 days remaining)",secops-triage-team
+microsoft.com,2026-11-08 23:30:11,152,HEALTHY,P3 - OK,NO_ACTION,2026-06-09 14:59:02,"📋 **Task:** Review SSL Certificate configuration for microsoft.com
+
+🚨 **Priority:** LOW
+
+⚙️ **Action Steps:**
+• Run standard diagnostics scan.
+• Verify infrastructure path availability.",platform-team
+amazon.com,2026-11-18 23:59:59,162,HEALTHY,P3 - OK,NO_ACTION,2026-06-09 14:58:30,"📋 **Task:** Amazon.com Certificate Renewal
+
+🚨 **Priority:** LOW
+
+⚙️ **Action Steps:**
+• Verify Amazon.com's certificate details and validate the renewal process is scheduled correctly.
+• Suggest a reminder to the owner 30 days prior to expiration to ensure timely action.",secops-triage-team
+python.org,2027-02-14 13:03:45,249,HEALTHY,P3 - OK,NO_ACTION,2026-06-09 15:00:02,"📋 **Task:** Python.org Certificate Renewal Preparation
+
+🚨 **Priority:** LOW
+
+⚙️ **Action Steps:**
+• Verify certificate renewal configuration and ensure python.org's SSL/TLS certificates are up-to-date.
+• Run a dry-run of the certificate renewal process to identify any potential issues.",secops-triage-team

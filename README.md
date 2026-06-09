@@ -52,19 +52,19 @@ Most monitoring systems only detect expiry but do not suggest remediation steps.
 
 This project combines:
 
-* 🔍 SSL Monitoring
-* ⚙️ Risk Analysis
-* 🤖 AI Task Generation
-* 📊 Ranking Engine
-* 🔔 Real-Time Alerts
-* 🌐 Dashboard Visualization
-* 📄 Automated Reporting
+*  SSL Monitoring
+*  Risk Analysis
+*  AI Task Generation
+*  Ranking Engine
+*  Real-Time Alerts
+*  Dashboard Visualization
+*  Automated Reporting
 
 to build a complete AI-powered SSL observability platform.
 
 ---
 
-# 🧠 AI Usage
+#  AI Usage
 
 | AI Tool         | Purpose                                      |
 | --------------- | -------------------------------------------- |
@@ -74,26 +74,26 @@ to build a complete AI-powered SSL observability platform.
 
 ---
 
-# 🏗️ System Architecture
+#  System Architecture
 
 ```text id="zr8fd8"
-📄 domains.csv
+ domains.csv
         ↓
-🔍 SSL Scanner
+ SSL Scanner
         ↓
-⚙️ Risk Engine
+ Risk Engine
         ↓
-🤖 Ollama AI Engine
+ Ollama AI Engine
         ↓
-💾 SQLite Database
+ SQLite Database
         ↓
-🔔 Discord Alerts
+ Discord Alerts
         ↓
-📊 Ranking System
+ Ranking System
         ↓
-📄 CSV + Markdown Reports
+ CSV + Markdown Reports
         ↓
-🌐 Flask Dashboard
+ Flask Dashboard
 ```
 
 ---
@@ -311,11 +311,11 @@ http://127.0.0.1:5000
 
 | Output             | Description             |
 | ------------------ | ----------------------- |
-| 💾 SQLite DB       | SSL monitoring history  |
-| 📊 CSV Report      | Ranked SSL report       |
-| 📄 Markdown Report | Email-ready report      |
-| 🔔 Discord Alert   | Real-time notifications |
-| 🌐 Dashboard       | Live monitoring UI      |
+|  SQLite DB       | SSL monitoring history  |
+|  CSV Report      | Ranked SSL report       |
+|  Markdown Report | Email-ready report      |
+|  Discord Alert   | Real-time notifications |
+|  Dashboard       | Live monitoring UI      |
 
 ---
 

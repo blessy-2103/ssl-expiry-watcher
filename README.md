@@ -1,370 +1,266 @@
-# SSL Certificate Expiry Watcher
+#  SSL Certificate Expiry Watcher
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python">
+  <img src="https://img.shields.io/badge/Flask-Web%20Dashboard-black?style=for-the-badge&logo=flask">
+  <img src="https://img.shields.io/badge/SQLite-Database-07405E?style=for-the-badge&logo=sqlite">
+  <img src="https://img.shields.io/badge/Ollama-Llama3-green?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Discord-Alerts-5865F2?style=for-the-badge&logo=discord">
+  <img src="https://img.shields.io/badge/AI-Powered-red?style=for-the-badge">
+</p>
 
-<img src="https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python">
-
-<img src="https://img.shields.io/badge/Flask-Web%20Dashboard-black?style=for-the-badge&logo=flask">
-
-<img src="https://img.shields.io/badge/SQLite-Database-07405E?style=for-the-badge&logo=sqlite">
-
-<img src="https://img.shields.io/badge/Ollama-Llama3-green?style=for-the-badge">
-
-<img src="https://img.shields.io/badge/Discord-Alerts-5865F2?style=for-the-badge&logo=discord">
-
-<img src="https://img.shields.io/badge/AI-Powered-red?style=for-the-badge">
-
-<img src="https://img.shields.io/badge/Hackathon-Project-orange?style=for-the-badge">
-
+<p align="center">
+  <b>An intelligent AI-powered SSL observability platform for proactive certificate management</b>
 </p>
 
 ---
 
-#  Overview
+##  Overview
 
-An intelligent  SSL monitoring platform that:
+SSL Certificate Expiry Watcher is a full-stack monitoring platform that tracks SSL certificates across multiple public domains, detects expiry risks, and generates AI-powered remediation tasks — all from a live web dashboard.
 
-✅ Scans SSL certificates of public domains
-✅ Detects expiry risks
-✅ Ranks domains by urgency
-✅ Generates AI-powered renewal tasks
-✅ Sends Discord alerts
-✅ Exports CSV & Markdown reports
-✅ Displays live monitoring dashboard
-
----
-
-#  Problem Statement
-
-SSL certificates expire frequently and manual tracking can cause:
-
-* 🔴 Website downtime
-* 🔴 Browser security warnings
-* 🔴 Service interruptions
-* 🔴 Operational failures
-* 🔴 Loss of customer trust
-
-Most monitoring systems only detect expiry but do not suggest remediation steps.
+**Key capabilities:**
+- Scans SSL certificates of public domains
+- Detects and classifies expiry risks automatically
+- Ranks domains by urgency
+- Generates AI-powered renewal tasks via Ollama + Llama3
+- Sends real-time Discord alerts
+- Exports CSV and Markdown reports
+- Displays a live auto-refreshing monitoring dashboard
+- Stores full scan history in a SQLite database
 
 ---
 
-#  Solution
+##  Problem Statement
 
-This project combines:
+SSL certificates expire frequently and manual tracking leads to:
 
-*  SSL Monitoring
-*  Risk Analysis
-*  AI Task Generation
-*  Ranking Engine
-*  Real-Time Alerts
-*  Dashboard Visualization
-*  Automated Reporting
+- Website downtime
+- Browser security warnings
+- Service interruptions
+- Operational failures
+- Loss of customer trust
 
-to build a complete AI-powered SSL observability platform.
+Most monitoring tools only detect expiry — they do not suggest what to do next. This project solves both detection and remediation.
 
 ---
 
-#  AI Usage
+##  Solution
 
-| AI Tool         | Purpose                                      |
-| --------------- | -------------------------------------------- |
-| ChatGPT         | Backend development, debugging, architecture |
-| Gemini AI       | Frontend dashboard UI improvements           |
-| Ollama + Llama3 | Runtime AI renewal task generation           |
+This platform combines several systems into one integrated tool:
+
+| Layer | Component |
+|---|---|
+| Detection | SSL Scanner |
+| Analysis | Risk Analysis Engine |
+| Intelligence | AI Task Generator (Ollama + Llama3) |
+| Prioritization | Ranking Engine |
+| Notification | Real-Time Discord Alerts |
+| Visualization | Flask Dashboard |
+| Reporting | CSV + Markdown Report Generator |
 
 ---
 
-#  System Architecture
+##  Project Structure
 
-```text id="zr8fd8"
- domains.csv
-        ↓
- SSL Scanner
-        ↓
- Risk Engine
-        ↓
- Ollama AI Engine
-        ↓
- SQLite Database
-        ↓
- Discord Alerts
-        ↓
- Ranking System
-        ↓
- CSV + Markdown Reports
-        ↓
- Flask Dashboard
 ```
-
----
-
-# 📁 Project Structure
-
-```text id="6i5bfg"
-📦 ssl-expiry-watcher
+ssl-expiry-watcher/
 │
-├── 📂 src/
-│   ├── main.py
-│   ├── scanner.py
-│   ├── engine.py
-│   ├── database.py
-│   ├── dashboard.py
-│   ├── llm.py
-│   ├── ranker.py
-│   ├── report.py
-│   └── discord_alert.py
+├── src/
+│   ├── main.py              # Entry point — runs full scan pipeline
+│   ├── scanner.py           # SSL certificate fetching and expiry calculation
+│   ├── engine.py            # Risk analysis and status classification
+│   ├── database.py          # SQLite insert and fetch operations
+│   ├── app.py               # Flask web dashboard
+│   ├── llm.py               # Ollama + Llama3 AI task generation
+│   ├── ranker.py            # Domain urgency ranking logic
+│   ├── report.py            # CSV and Markdown report generation
+│   └── discord_alert.py     # Discord webhook alert integration
 │
-├── 📂 database/
-│   └── ssl_data.db
+├── database/
+│   └── ssl_data.db          # SQLite database (auto-created on first run)
 │
-├── 📂 data/
-│   └── domains.csv
+├── data/
+│   └── domains.csv          # Input list of domains to monitor
 │
-├── 📂 output/
-│   ├── report.csv
-│   └── report.md
+├── reports/
+│   ├── ssl_report.csv       # Generated CSV report
+│   └── ssl_report.md        # Generated Markdown report
 │
-├── 📂 templates/
-│   └── dashboard.html
+├── src/templates/
+│   └── dashboard.html       # Flask dashboard HTML template
 │
 └── README.md
 ```
 
 ---
 
-#  Features
+##  Features
 
-##  SSL Monitoring
+###  SSL Monitoring
+- Fetches SSL certificate metadata for any public domain
+- Calculates days remaining until expiry
+- Detects invalid or unreachable certificates
 
-* Fetch SSL certificate metadata
-* Calculate expiry days
-* Detect invalid certificates
+###  Risk Analysis Engine
 
----
+| Status | Meaning |
+|---|---|
+|  HEALTHY | Certificate is valid — no action needed |
+|  WARNING | Expiring soon — renewal required |
+|  BROKEN | Expired or invalid — urgent fix needed |
+|  ERROR | Domain unreachable — investigate immediately |
 
-##  Risk Analysis Engine
+###  AI Renewal Task Generator
+Uses Ollama + Llama3 at runtime to generate:
+- Unique SSL renewal tasks per domain
+- Priority levels (HIGH / LOW)
+- Owner placeholders for team assignment
+- Specific step-by-step remediation actions
 
-Classifies domains into:
-
-* 🟢 HEALTHY
-* 🟡 WARNING
-* 🔴 BROKEN
-
----
-
-##  AI Renewal Task Generator
-
-Uses Ollama + Llama3 to generate:
-
-* SSL renewal tasks
-* Priority levels
-* Owner placeholders
-* Suggested remediation steps
-
----
-
-##  Discord Alert System
-
+###  Discord Alert System
 Automatically sends alerts for:
+-  Certificates expiring soon (WARNING status)
+-  Broken or expired certificates (BROKEN status)
 
-* Expiring certificates
-* Broken SSL certificates
+###  Ranking System
+- Domains with fewest days left are ranked first
+- Critical incidents are prioritized at the top
 
----
+###  Automated Reports
+- CSV report — downloadable directly from the dashboard
+- Markdown report — formatted and email-ready
 
-##  Ranking System
-
-Ranks domains by urgency:
-
-* Lowest days left first
-* Critical incidents prioritized
-
----
-
-##  Automated Reports
-
-Generates:
-
-*  CSV reports
-*  Email-ready Markdown reports
+###  Live Dashboard
+- Real-time monitoring UI built with Flask
+- Search and filter by domain name or status
+- Status badges for at-a-glance visibility
+- AI-generated task display per domain
+- Auto-refreshes every 30 seconds
 
 ---
 
-##  Dashboard
+##  Tech Stack
 
-Provides:
-
-* Live monitoring UI
-* Search & filtering
-* Status badges
-* AI-generated task display
-* Auto-refreshing dashboard
+| Technology | Usage |
+|---|---|
+| Python 3.12 | Backend |
+| Flask | Web Dashboard |
+| SQLite | Database |
+| Pandas | CSV Processing |
+| Ollama + Llama3 | AI Runtime (Task Generation) |
+| Discord Webhooks | Alerts |
+| ngrok | Public URL Tunneling |
+| HTML / CSS | Frontend |
 
 ---
 
-#  Input Example
+##  Input Format
 
-## domains.csv
+Create a `data/domains.csv` file with one domain per row:
 
-```csv id="m2edk0"
+```csv
 domain
 google.com
 github.com
 wikipedia.org
 openai.com
+yourwebsite.com
 ```
 
 ---
 
-#  AI Output Example
+##  How to Run
 
-```json id="1xjlwm"
-{
-  "task": "Renew SSL certificate for wikipedia.org",
-  "priority": "P1",
-  "owner": "platform-team",
-  "action": "Generate new certificate and update DNS configuration"
-}
-```
-
----
-
-#  How to Run
-
-## 1️⃣ Clone Repository
-
-```bash id="p5snr5"
+### 1. Clone the Repository
+```bash
 git clone https://github.com/your-username/ssl-expiry-watcher.git
-```
-
----
-
-## 2️⃣ Open Project Folder
-
-```bash id="ojphrg"
 cd ssl-expiry-watcher
 ```
 
----
-
-## 3️⃣ Create Virtual Environment
-
-```bash id="qfr0h6"
+### 2. Create and Activate Virtual Environment
+```bash
+# Windows
 python -m venv venv
-```
-
----
-
-## 4️⃣ Activate Virtual Environment
-
-### Windows
-
-```bash id="k22gdl"
 venv\Scripts\activate
 ```
 
----
-
-## 5️⃣ Install Dependencies
-
-```bash id="t38lva"
+### 3. Install Dependencies
+```bash
 pip install -r requirements.txt
 ```
 
----
-
-## 6️⃣ Start Ollama
-
-```bash id="s8y0j7"
-ollama run llama3
+### 4. Start Ollama (AI Engine)
+```bash
+ollama pull llama3
+ollama serve
 ```
 
-Keep this terminal running.
-
----
-
-## 7️⃣ Run Main Monitoring System
-
-```bash id="z5z4c0"
+### 5. Run the SSL Scanner
+```bash
 python src/main.py
 ```
 
----
-
-## 8️⃣ Run Flask Dashboard
-
-```bash id="f2a5hg"
-python src/dashboard.py
+### 6. Launch the Flask Dashboard
+```bash
+python src/app.py
 ```
 
----
-
-## 9️⃣ Open Browser
-
-```text id="fscs1k"
+### 7. Open in Browser
+```
 http://127.0.0.1:5000
 ```
 
----
-
-#  Outputs Generated
-
-| Output             | Description             |
-| ------------------ | ----------------------- |
-|  SQLite DB       | SSL monitoring history  |
-|  CSV Report      | Ranked SSL report       |
-|  Markdown Report | Email-ready report      |
-|  Discord Alert   | Real-time notifications |
-|  Dashboard       | Live monitoring UI      |
-
----
-
-#  Tech Stack
-
-| Technology       | Usage          |
-| ---------------- | -------------- |
-| Python           | Backend        |
-| Flask            | Dashboard      |
-| SQLite           | Database       |
-| Pandas           | CSV Processing |
-| Ollama           | AI Runtime     |
-| Llama3           | AI Model       |
-| Discord Webhooks | Alerts         |
-| HTML/CSS         | Frontend       |
-
----
-
-# 🔄 Workflow
-
-```text id="ryu9tr"
-Input Domains
-      ↓
-SSL Certificate Scan
-      ↓
-Risk Classification
-      ↓
-AI Renewal Task Generation
-      ↓
-Database Storage
-      ↓ 
-Discord Notifications
-      ↓
-Ranking Engine
-      ↓
-CSV + Markdown Export
-      ↓
-Dashboard Visualization
+### 8. Get a Public Shareable Link (Optional)
+```bash
+.\ngrok.exe http 5000
 ```
 
 ---
-# Screenshots
+
+##  Outputs
+
+| Output | Description |
+|---|---|
+|  SQLite Database | Full SSL monitoring history across all scans |
+|  CSV Report | Ranked SSL domain report (downloadable) |
+|  Markdown Report | Email-ready formatted report |
+|  Discord Alerts | Real-time notifications for WARNING and BROKEN |
+|  Dashboard | Live monitoring UI with filters and AI tasks |
+
+---
+
+##  System Architecture
+
+```
+domains.csv
+    ↓
+SSL Scanner
+    ↓
+Risk Analysis Engine
+    ↓
+Ollama AI Engine (Llama3)
+    ↓
+SQLite Database
+    ↓
+Discord Alerts
+    ↓
+Ranking System
+    ↓
+CSV + Markdown Reports
+    ↓
+Flask Dashboard
+```
+
+---
+##  Screenshots
+
+> Dashboard — Main monitoring view with status badges and AI tasks
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/838318cd-ecae-4d95-9636-9eb5f507bac0" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fb5ee3a4-d787-458b-a4f6-9d9f076c88ea" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/dbe1a193-9577-438b-92cc-94178024b555" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2695ba3b-d6db-4694-ba32-c6cc3994b602" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9dfffdcf-65e6-4dee-ae21-bdd5ed6f1f1f" />
-
-
 
 
 

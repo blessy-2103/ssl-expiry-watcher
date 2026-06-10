@@ -5,14 +5,3 @@ venv/
 __pycache__/
 *.pyc
 
-# Database
-*.db
-
-# Reports
-reports/
-
-# VS Code
-.vscode/
-
-# Environment Variables
-.env

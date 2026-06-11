@@ -13,9 +13,7 @@
   <b>An intelligent AI-powered SSL observability platform for proactive certificate management</b>
 </p>
 
-<p align="center">
-  🔗 <b>Live Demo:</b> <a href="https://parchment-embark-unpeeled.ngrok-free.dev/">https://parchment-embark-unpeeled.ngrok-free.dev/</a>
-</p>
+
 
 ---
 

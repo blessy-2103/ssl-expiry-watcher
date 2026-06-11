@@ -1,4 +1,4 @@
-#  SSL Certificate Expiry Watcher
+# SSL Certificate Expiry Watcher
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python">
@@ -13,9 +13,13 @@
   <b>An intelligent AI-powered SSL observability platform for proactive certificate management</b>
 </p>
 
+<p align="center">
+  🔗 <b>Live Demo:</b> <a href="https://parchment-embark-unpeeled.ngrok-free.dev/">https://parchment-embark-unpeeled.ngrok-free.dev/</a>
+</p>
+
 ---
 
-##  Overview
+## Overview
 
 SSL Certificate Expiry Watcher is a full-stack monitoring platform that tracks SSL certificates across multiple public domains, detects expiry risks, and generates AI-powered remediation tasks — all from a live web dashboard.
 
@@ -31,7 +35,7 @@ SSL Certificate Expiry Watcher is a full-stack monitoring platform that tracks S
 
 ---
 
-##  Problem Statement
+## Problem Statement
 
 SSL certificates expire frequently and manual tracking leads to:
 
@@ -45,7 +49,7 @@ Most monitoring tools only detect expiry — they do not suggest what to do next
 
 ---
 
-##  Solution
+## Solution
 
 This platform combines several systems into one integrated tool:
 
@@ -61,7 +65,33 @@ This platform combines several systems into one integrated tool:
 
 ---
 
-##  Project Structure
+## Requirement Compliance — "Scanner + LLM Ticket Drafter"
+
+| Required Component | File in Project | Status |
+|---|---|---|
+| Scanner | `src/scanner.py` | ✅ Fetches SSL cert metadata |
+| LLM Ticket Drafter | `src/llm.py` | ✅ Generates renewal tasks via Ollama |
+| Bonus: AI Drafter | `src/ai_drafter.py` | ✅ Extra AI logic |
+
+### How They Work Together
+
+```
+scanner.py   →  fetches SSL expiry data for each domain
+     ↓
+engine.py    →  classifies status (HEALTHY / WARNING / BROKEN)
+     ↓
+ranker.py    →  ranks domains by days-to-expiry
+     ↓
+llm.py       →  drafts renewal task with owner placeholder
+     ↓
+database.py  →  stores everything in SQLite
+     ↓
+report.py    →  generates CSV + Markdown
+```
+
+---
+
+## Project Structure
 
 ```
 ssl-expiry-watcher/
@@ -95,43 +125,43 @@ ssl-expiry-watcher/
 
 ---
 
-##  Features
+## Features
 
-###  SSL Monitoring
+### SSL Monitoring
 - Fetches SSL certificate metadata for any public domain
 - Calculates days remaining until expiry
 - Detects invalid or unreachable certificates
 
-###  Risk Analysis Engine
+### Risk Analysis Engine
 
 | Status | Meaning |
 |---|---|
-|  HEALTHY | Certificate is valid — no action needed |
-|  WARNING | Expiring soon — renewal required |
-|  BROKEN | Expired or invalid — urgent fix needed |
-|  ERROR | Domain unreachable — investigate immediately |
+| HEALTHY | Certificate is valid — no action needed |
+| WARNING | Expiring soon — renewal required |
+| BROKEN | Expired or invalid — urgent fix needed |
+| ERROR | Domain unreachable — investigate immediately |
 
-###  AI Renewal Task Generator
+### AI Renewal Task Generator
 Uses Ollama + Llama3 at runtime to generate:
 - Unique SSL renewal tasks per domain
 - Priority levels (HIGH / LOW)
 - Owner placeholders for team assignment
 - Specific step-by-step remediation actions
 
-###  Discord Alert System
+### Discord Alert System
 Automatically sends alerts for:
--  Certificates expiring soon (WARNING status)
--  Broken or expired certificates (BROKEN status)
+- Certificates expiring soon (WARNING status)
+- Broken or expired certificates (BROKEN status)
 
-###  Ranking System
+### Ranking System
 - Domains with fewest days left are ranked first
 - Critical incidents are prioritized at the top
 
-###  Automated Reports
+### Automated Reports
 - CSV report — downloadable directly from the dashboard
 - Markdown report — formatted and email-ready
 
-###  Live Dashboard
+### Live Dashboard
 - Real-time monitoring UI built with Flask
 - Search and filter by domain name or status
 - Status badges for at-a-glance visibility
@@ -140,7 +170,7 @@ Automatically sends alerts for:
 
 ---
 
-##  Tech Stack
+## Tech Stack
 
 | Technology | Usage |
 |---|---|
@@ -155,7 +185,7 @@ Automatically sends alerts for:
 
 ---
 
-##  Input Format
+## Input Format
 
 Create a `data/domains.csv` file with one domain per row:
 
@@ -170,7 +200,7 @@ yourwebsite.com
 
 ---
 
-##  How to Run
+## How to Run
 
 ### 1. Clone the Repository
 ```bash
@@ -218,19 +248,29 @@ http://127.0.0.1:5000
 
 ---
 
-##  Outputs
+## Live Deployment
 
-| Output | Description |
-|---|---|
-|  SQLite Database | Full SSL monitoring history across all scans |
-|  CSV Report | Ranked SSL domain report (downloadable) |
-|  Markdown Report | Email-ready formatted report |
-|  Discord Alerts | Real-time notifications for WARNING and BROKEN |
-|  Dashboard | Live monitoring UI with filters and AI tasks |
+This project is currently deployed and accessible at:
+
+🔗 **[https://parchment-embark-unpeeled.ngrok-free.dev/](https://parchment-embark-unpeeled.ngrok-free.dev/)**
+
+> Note: This is a temporary ngrok tunnel link — it will change if the host machine restarts the tunnel.
 
 ---
 
-##  System Architecture
+## Outputs
+
+| Output | Description |
+|---|---|
+| SQLite Database | Full SSL monitoring history across all scans |
+| CSV Report | Ranked SSL domain report (downloadable) |
+| Markdown Report | Email-ready formatted report |
+| Discord Alerts | Real-time notifications for WARNING and BROKEN |
+| Dashboard | Live monitoring UI with filters and AI tasks |
+
+---
+
+## System Architecture
 
 ```
 domains.csv
@@ -253,14 +293,13 @@ Flask Dashboard
 ```
 
 ---
-##  Screenshots
+
+## Screenshots
 
 > Dashboard — Main monitoring view with status badges and AI tasks
+
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/838318cd-ecae-4d95-9636-9eb5f507bac0" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fb5ee3a4-d787-458b-a4f6-9d9f076c88ea" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/dbe1a193-9577-438b-92cc-94178024b555" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/2695ba3b-d6db-4694-ba32-c6cc3994b602" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/9dfffdcf-65e6-4dee-ae21-bdd5ed6f1f1f" />
-
-
-
